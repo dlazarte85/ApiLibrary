@@ -1,3 +1,17 @@
 # fastapi, uvicorn
 fastapi
 uvicorn
+
+# for database
+sqlalchemy
+psycopg2-binary
+alembic
+
+# for loading environment variables
+python-dotenv
+
+# for email validation
+pydantic[email]
+
+#hashing
+passlib[bcrypt]
