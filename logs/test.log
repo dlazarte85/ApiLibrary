@@ -1,0 +1,4 @@
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:root:<Response [307]>
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:root:<Response [307]>
