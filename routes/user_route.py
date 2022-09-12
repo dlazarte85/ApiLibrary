@@ -35,3 +35,23 @@ async def get_user(id: int, db: Session = Depends(get_db)):
 )
 async def create_user(user: user_schema.UserCreate, db: Session = Depends(get_db)):
     return user_service.create_user(user, db)
+
+
+@route.put(
+    "/users/{id}",
+    status_code=status.HTTP_200_OK,
+    response_model=user_schema.User,
+    description="Update a user"
+)
+async def update_user(id: int, user: user_schema.UserUpdate, db: Session = Depends(get_db)):
+    return user_service.update_user(user, id, db)
+
+
+@route.delete(
+    "/users/{id}",
+    status_code=status.HTTP_200_OK,
+    response_model=user_schema.User,
+    description="Delete a user"
+)
+async def delete_user(id: int, db: Session = Depends(get_db)):
+    return user_service.delete_user(id, db)

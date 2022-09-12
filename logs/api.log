@@ -305,3 +305,874 @@ INFO:uvicorn.error:Shutting down
 INFO:uvicorn.error:Waiting for application shutdown.
 INFO:uvicorn.error:Application shutdown complete.
 INFO:uvicorn.error:Finished server process [26265]
+INFO:uvicorn.error:Started server process [26773]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [26773]
+INFO:uvicorn.error:Started server process [27336]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [27336]
+INFO:uvicorn.error:Started server process [27359]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [27359]
+INFO:uvicorn.error:Started server process [27405]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [27405]
+INFO:uvicorn.error:Started server process [35781]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [35781]
+INFO:uvicorn.error:Started server process [35810]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [35810]
+INFO:uvicorn.error:Started server process [35841]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [35841]
+INFO:uvicorn.error:Started server process [35877]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [35877]
+INFO:uvicorn.error:Started server process [35884]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+ERROR:root:'UserModel' object has no attribute 'update'
+ERROR:uvicorn.error:Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/uvicorn/protocols/http/h11_impl.py", line 404, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/uvicorn/middleware/proxy_headers.py", line 78, in __call__
+    return await self.app(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/fastapi/applications.py", line 269, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/applications.py", line 124, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/exceptions.py", line 93, in __call__
+    raise exc
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/exceptions.py", line 82, in __call__
+    await self.app(scope, receive, sender)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 21, in __call__
+    raise e
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/routing.py", line 670, in __call__
+    await route.handle(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/routing.py", line 266, in handle
+    await self.app(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/routing.py", line 65, in app
+    response = await func(request)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/fastapi/routing.py", line 231, in app
+    raw_response = await run_endpoint_function(
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/fastapi/routing.py", line 160, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/./routes/user_route.py", line 47, in update_user
+    return user_service.update_user(user, id, db)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/./service/user_service.py", line 50, in update_user
+    db_user.update(user.__dict__)
+AttributeError: 'UserModel' object has no attribute 'update'
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [35884]
+INFO:uvicorn.error:Started server process [38814]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [38814]
+INFO:uvicorn.error:Started server process [38866]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+ERROR:root:Class 'sqlalchemy.orm.query.Query' is not mapped
+ERROR:uvicorn.error:Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2318, in refresh
+    state = attributes.instance_state(instance)
+AttributeError: 'Query' object has no attribute '_sa_instance_state'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/uvicorn/protocols/http/h11_impl.py", line 404, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/uvicorn/middleware/proxy_headers.py", line 78, in __call__
+    return await self.app(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/fastapi/applications.py", line 269, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/applications.py", line 124, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/exceptions.py", line 93, in __call__
+    raise exc
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/exceptions.py", line 82, in __call__
+    await self.app(scope, receive, sender)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 21, in __call__
+    raise e
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/routing.py", line 670, in __call__
+    await route.handle(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/routing.py", line 266, in handle
+    await self.app(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/routing.py", line 65, in app
+    response = await func(request)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/fastapi/routing.py", line 231, in app
+    raw_response = await run_endpoint_function(
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/fastapi/routing.py", line 160, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/./routes/user_route.py", line 47, in update_user
+    return user_service.update_user(user, id, db)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/./service/user_service.py", line 53, in update_user
+    db.refresh(db_user)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2320, in refresh
+    util.raise_(
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+sqlalchemy.orm.exc.UnmappedInstanceError: Class 'sqlalchemy.orm.query.Query' is not mapped
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [38866]
+INFO:uvicorn.error:Started server process [39056]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [39056]
+INFO:uvicorn.error:Started server process [39083]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [39083]
+INFO:uvicorn.error:Started server process [39095]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [39095]
+INFO:uvicorn.error:Started server process [39243]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [39243]
+INFO:uvicorn.error:Started server process [41445]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [41445]
+INFO:uvicorn.error:Started server process [41483]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+INFO:sqlalchemy.engine.Engine:select pg_catalog.version()
+INFO:sqlalchemy.engine.Engine:[raw sql] {}
+INFO:sqlalchemy.engine.Engine:select current_schema()
+INFO:sqlalchemy.engine.Engine:[raw sql] {}
+INFO:sqlalchemy.engine.Engine:show standard_conforming_strings
+INFO:sqlalchemy.engine.Engine:[raw sql] {}
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.id AS users_id, users.username AS users_username, users.name AS users_name, users.email AS users_email, users.password AS users_password, users.enabled AS users_enabled 
+FROM users 
+WHERE users.email = %(email_1)s 
+ LIMIT %(param_1)s
+INFO:sqlalchemy.engine.Engine:[generated in 0.00029s] {'email_1': 'juan@example.com', 'param_1': 1}
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [41483]
+INFO:uvicorn.error:Started server process [41555]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+INFO:sqlalchemy.engine.Engine:select pg_catalog.version()
+INFO:sqlalchemy.engine.Engine:[raw sql] {}
+INFO:sqlalchemy.engine.Engine:select current_schema()
+INFO:sqlalchemy.engine.Engine:[raw sql] {}
+INFO:sqlalchemy.engine.Engine:show standard_conforming_strings
+INFO:sqlalchemy.engine.Engine:[raw sql] {}
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.id AS users_id, users.username AS users_username, users.name AS users_name, users.email AS users_email, users.password AS users_password, users.enabled AS users_enabled 
+FROM users 
+WHERE users.email = %(email_1)s 
+ LIMIT %(param_1)s
+INFO:sqlalchemy.engine.Engine:[generated in 0.00015s] {'email_1': 'juan@example.com', 'param_1': 1}
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [41555]
+INFO:uvicorn.error:Started server process [41730]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [41730]
+INFO:uvicorn.error:Started server process [41985]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [41985]
+INFO:uvicorn.error:Started server process [42007]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [42007]
+INFO:uvicorn.error:Started server process [42026]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+ERROR:root:SQL expression for WHERE/HAVING role expected, got {<sqlalchemy.orm.attributes.InstrumentedAttribute object at 0x7f0eb212b920>: 'juan@example.com', <sqlalchemy.orm.attributes.InstrumentedAttribute object at 0x7f0eb212b740>: 1}.
+ERROR:uvicorn.error:Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/uvicorn/protocols/http/h11_impl.py", line 404, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/uvicorn/middleware/proxy_headers.py", line 78, in __call__
+    return await self.app(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/fastapi/applications.py", line 269, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/applications.py", line 124, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/exceptions.py", line 93, in __call__
+    raise exc
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/exceptions.py", line 82, in __call__
+    await self.app(scope, receive, sender)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 21, in __call__
+    raise e
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/routing.py", line 670, in __call__
+    await route.handle(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/routing.py", line 266, in handle
+    await self.app(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/routing.py", line 65, in app
+    response = await func(request)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/fastapi/routing.py", line 231, in app
+    raw_response = await run_endpoint_function(
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/fastapi/routing.py", line 160, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/./routes/user_route.py", line 47, in update_user
+    return user_service.update_user(user, id, db)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/./service/user_service.py", line 47, in update_user
+    if get_user_by_email(db, user.email, user_id):
+  File "/home/diego/proyectos/grow/python/ApiLibrary/./service/user_service.py", line 24, in get_user_by_email
+    db_user = db.query(UserModel).filter(all_filters).first()
+  File "<string>", line 2, in filter
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/sqlalchemy/sql/base.py", line 110, in _generative
+    x = fn(self, *args, **kw)
+  File "<string>", line 2, in filter
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/sqlalchemy/orm/base.py", line 230, in generate
+    fn(self, *args[1:], **kw)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 1709, in filter
+    criterion = coercions.expect(
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/sqlalchemy/sql/coercions.py", line 188, in expect
+    resolved = impl._literal_coercion(
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/sqlalchemy/sql/coercions.py", line 401, in _literal_coercion
+    self._raise_for_expected(element, argname)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/sqlalchemy/sql/coercions.py", line 283, in _raise_for_expected
+    util.raise_(exc.ArgumentError(msg, code=code), replace_context=err)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+sqlalchemy.exc.ArgumentError: SQL expression for WHERE/HAVING role expected, got {<sqlalchemy.orm.attributes.InstrumentedAttribute object at 0x7f0eb212b920>: 'juan@example.com', <sqlalchemy.orm.attributes.InstrumentedAttribute object at 0x7f0eb212b740>: 1}.
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [42026]
+INFO:uvicorn.error:Started server process [42123]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+ERROR:root:keywords must be strings
+ERROR:uvicorn.error:Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/uvicorn/protocols/http/h11_impl.py", line 404, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/uvicorn/middleware/proxy_headers.py", line 78, in __call__
+    return await self.app(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/fastapi/applications.py", line 269, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/applications.py", line 124, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/exceptions.py", line 93, in __call__
+    raise exc
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/exceptions.py", line 82, in __call__
+    await self.app(scope, receive, sender)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 21, in __call__
+    raise e
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/routing.py", line 670, in __call__
+    await route.handle(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/routing.py", line 266, in handle
+    await self.app(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/routing.py", line 65, in app
+    response = await func(request)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/fastapi/routing.py", line 231, in app
+    raw_response = await run_endpoint_function(
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/fastapi/routing.py", line 160, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/./routes/user_route.py", line 47, in update_user
+    return user_service.update_user(user, id, db)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/./service/user_service.py", line 47, in update_user
+    if get_user_by_email(db, user.email, user_id):
+  File "/home/diego/proyectos/grow/python/ApiLibrary/./service/user_service.py", line 24, in get_user_by_email
+    db_user = db.query(UserModel).filter(**all_filters).first()
+TypeError: keywords must be strings
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [42123]
+INFO:uvicorn.error:Started server process [42462]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+INFO:sqlalchemy.engine.Engine:select pg_catalog.version()
+INFO:sqlalchemy.engine.Engine:[raw sql] {}
+INFO:sqlalchemy.engine.Engine:select current_schema()
+INFO:sqlalchemy.engine.Engine:[raw sql] {}
+INFO:sqlalchemy.engine.Engine:show standard_conforming_strings
+INFO:sqlalchemy.engine.Engine:[raw sql] {}
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.id AS users_id, users.username AS users_username, users.name AS users_name, users.email AS users_email, users.password AS users_password, users.enabled AS users_enabled 
+FROM users 
+WHERE users.email = %(email_1)s 
+ LIMIT %(param_1)s
+INFO:sqlalchemy.engine.Engine:[generated in 0.00015s] {'email_1': 'juan@example.com', 'param_1': 1}
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [42462]
+INFO:uvicorn.error:Started server process [42770]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [42770]
+INFO:uvicorn.error:Started server process [42873]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+ERROR:root:sqlalchemy.orm.query.Query.filter() argument after ** must be a mapping, not list
+ERROR:uvicorn.error:Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/uvicorn/protocols/http/h11_impl.py", line 404, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/uvicorn/middleware/proxy_headers.py", line 78, in __call__
+    return await self.app(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/fastapi/applications.py", line 269, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/applications.py", line 124, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/exceptions.py", line 93, in __call__
+    raise exc
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/exceptions.py", line 82, in __call__
+    await self.app(scope, receive, sender)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 21, in __call__
+    raise e
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/routing.py", line 670, in __call__
+    await route.handle(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/routing.py", line 266, in handle
+    await self.app(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/routing.py", line 65, in app
+    response = await func(request)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/fastapi/routing.py", line 231, in app
+    raw_response = await run_endpoint_function(
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/fastapi/routing.py", line 160, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/./routes/user_route.py", line 47, in update_user
+    return user_service.update_user(user, id, db)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/./service/user_service.py", line 46, in update_user
+    if get_user_by_email(db, user.email, user_id):
+  File "/home/diego/proyectos/grow/python/ApiLibrary/./service/user_service.py", line 23, in get_user_by_email
+    db_user = db.query(UserModel).filter(**all_filters)
+TypeError: sqlalchemy.orm.query.Query.filter() argument after ** must be a mapping, not list
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [42873]
+INFO:uvicorn.error:Started server process [44059]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+INFO:sqlalchemy.engine.Engine:select pg_catalog.version()
+INFO:sqlalchemy.engine.Engine:[raw sql] {}
+INFO:sqlalchemy.engine.Engine:select current_schema()
+INFO:sqlalchemy.engine.Engine:[raw sql] {}
+INFO:sqlalchemy.engine.Engine:show standard_conforming_strings
+INFO:sqlalchemy.engine.Engine:[raw sql] {}
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.id AS users_id, users.username AS users_username, users.name AS users_name, users.email AS users_email, users.password AS users_password, users.enabled AS users_enabled 
+FROM users 
+WHERE users.email = %(email_1)s AND users.id != %(id_1)s 
+ LIMIT %(param_1)s
+INFO:sqlalchemy.engine.Engine:[generated in 0.00024s] {'email_1': 'juan@example.com', 'id_1': 1, 'param_1': 1}
+INFO:sqlalchemy.engine.Engine:UPDATE users SET username=%(username)s, name=%(name)s, email=%(email)s, password=%(password)s, enabled=%(enabled)s WHERE users.id = %(id_1)s
+INFO:sqlalchemy.engine.Engine:[generated in 0.00020s] {'username': 'raul', 'name': 'Raul', 'email': 'juan@example.com', 'password': 'string', 'enabled': True, 'id_1': 1}
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.id AS users_id, users.username AS users_username, users.name AS users_name, users.email AS users_email, users.password AS users_password, users.enabled AS users_enabled 
+FROM users 
+WHERE users.id = %(id_1)s 
+ LIMIT %(param_1)s
+INFO:sqlalchemy.engine.Engine:[generated in 0.00012s] {'id_1': 1, 'param_1': 1}
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [44059]
+INFO:uvicorn.error:Started server process [44302]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [44302]
+INFO:uvicorn.error:Started server process [44364]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+INFO:sqlalchemy.engine.Engine:select pg_catalog.version()
+INFO:sqlalchemy.engine.Engine:[raw sql] {}
+INFO:sqlalchemy.engine.Engine:select current_schema()
+INFO:sqlalchemy.engine.Engine:[raw sql] {}
+INFO:sqlalchemy.engine.Engine:show standard_conforming_strings
+INFO:sqlalchemy.engine.Engine:[raw sql] {}
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.id AS users_id, users.username AS users_username, users.name AS users_name, users.email AS users_email, users.password AS users_password, users.enabled AS users_enabled 
+FROM users 
+WHERE users.email = %(email_1)s AND users.id != %(id_1)s 
+ LIMIT %(param_1)s
+INFO:sqlalchemy.engine.Engine:[generated in 0.00016s] {'email_1': 'juan@example.com', 'id_1': 1, 'param_1': 1}
+INFO:sqlalchemy.engine.Engine:UPDATE users SET username=%(username)s, name=%(name)s, email=%(email)s, password=%(password)s, enabled=%(enabled)s WHERE users.id = %(id_1)s
+INFO:sqlalchemy.engine.Engine:[generated in 0.00021s] {'username': 'juan', 'name': 'Raul', 'email': 'juan@example.com', 'password': 'string', 'enabled': True, 'id_1': 1}
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.id AS users_id, users.username AS users_username, users.name AS users_name, users.email AS users_email, users.password AS users_password, users.enabled AS users_enabled 
+FROM users 
+WHERE users.id = %(id_1)s 
+ LIMIT %(param_1)s
+INFO:sqlalchemy.engine.Engine:[generated in 0.00014s] {'id_1': 1, 'param_1': 1}
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [44364]
+INFO:uvicorn.error:Started server process [44596]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+INFO:sqlalchemy.engine.Engine:select pg_catalog.version()
+INFO:sqlalchemy.engine.Engine:[raw sql] {}
+INFO:sqlalchemy.engine.Engine:select current_schema()
+INFO:sqlalchemy.engine.Engine:[raw sql] {}
+INFO:sqlalchemy.engine.Engine:show standard_conforming_strings
+INFO:sqlalchemy.engine.Engine:[raw sql] {}
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.id AS users_id, users.username AS users_username, users.name AS users_name, users.email AS users_email, users.password AS users_password, users.enabled AS users_enabled 
+FROM users 
+WHERE users.email = %(email_1)s AND users.id = %(id_1)s 
+ LIMIT %(param_1)s
+INFO:sqlalchemy.engine.Engine:[generated in 0.00016s] {'email_1': 'juan@example.com', 'id_1': 1, 'param_1': 1}
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [44596]
+INFO:uvicorn.error:Started server process [44664]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+INFO:sqlalchemy.engine.Engine:select pg_catalog.version()
+INFO:sqlalchemy.engine.Engine:[raw sql] {}
+INFO:sqlalchemy.engine.Engine:select current_schema()
+INFO:sqlalchemy.engine.Engine:[raw sql] {}
+INFO:sqlalchemy.engine.Engine:show standard_conforming_strings
+INFO:sqlalchemy.engine.Engine:[raw sql] {}
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.id AS users_id, users.username AS users_username, users.name AS users_name, users.email AS users_email, users.password AS users_password, users.enabled AS users_enabled 
+FROM users 
+WHERE users.email = %(email_1)s AND users.id != %(id_1)s 
+ LIMIT %(param_1)s
+INFO:sqlalchemy.engine.Engine:[generated in 0.00014s] {'email_1': 'juan@example.com', 'id_1': 1, 'param_1': 1}
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [44664]
+INFO:uvicorn.error:Started server process [44846]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+INFO:sqlalchemy.engine.Engine:select pg_catalog.version()
+INFO:sqlalchemy.engine.Engine:[raw sql] {}
+INFO:sqlalchemy.engine.Engine:select current_schema()
+INFO:sqlalchemy.engine.Engine:[raw sql] {}
+INFO:sqlalchemy.engine.Engine:show standard_conforming_strings
+INFO:sqlalchemy.engine.Engine:[raw sql] {}
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.id AS users_id, users.username AS users_username, users.name AS users_name, users.email AS users_email, users.password AS users_password, users.enabled AS users_enabled 
+FROM users 
+WHERE users.email = %(email_1)s AND users.id != %(id_1)s 
+ LIMIT %(param_1)s
+INFO:sqlalchemy.engine.Engine:[generated in 0.00018s] {'email_1': 'juan@example.com', 'id_1': 1, 'param_1': 1}
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [44846]
+INFO:uvicorn.error:Started server process [45007]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+INFO:sqlalchemy.engine.Engine:select pg_catalog.version()
+INFO:sqlalchemy.engine.Engine:[raw sql] {}
+INFO:sqlalchemy.engine.Engine:select current_schema()
+INFO:sqlalchemy.engine.Engine:[raw sql] {}
+INFO:sqlalchemy.engine.Engine:show standard_conforming_strings
+INFO:sqlalchemy.engine.Engine:[raw sql] {}
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.id AS users_id, users.username AS users_username, users.name AS users_name, users.email AS users_email, users.password AS users_password, users.enabled AS users_enabled 
+FROM users 
+WHERE users.email = %(email_1)s AND users.id != %(id_1)s 
+ LIMIT %(param_1)s
+INFO:sqlalchemy.engine.Engine:[generated in 0.00019s] {'email_1': 'juan@example.com', 'id_1': 1, 'param_1': 1}
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [45007]
+INFO:uvicorn.error:Started server process [45306]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+INFO:sqlalchemy.engine.Engine:select pg_catalog.version()
+INFO:sqlalchemy.engine.Engine:[raw sql] {}
+INFO:sqlalchemy.engine.Engine:select current_schema()
+INFO:sqlalchemy.engine.Engine:[raw sql] {}
+INFO:sqlalchemy.engine.Engine:show standard_conforming_strings
+INFO:sqlalchemy.engine.Engine:[raw sql] {}
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.id AS users_id, users.username AS users_username, users.name AS users_name, users.email AS users_email, users.password AS users_password, users.enabled AS users_enabled 
+FROM users 
+WHERE users.email = %(email_1)s AND users.id = %(id_1)s 
+ LIMIT %(param_1)s
+INFO:sqlalchemy.engine.Engine:[generated in 0.00016s] {'email_1': 'juan@example.com', 'id_1': 1, 'param_1': 1}
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [45306]
+INFO:uvicorn.error:Started server process [45365]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+INFO:sqlalchemy.engine.Engine:select pg_catalog.version()
+INFO:sqlalchemy.engine.Engine:[raw sql] {}
+INFO:sqlalchemy.engine.Engine:select current_schema()
+INFO:sqlalchemy.engine.Engine:[raw sql] {}
+INFO:sqlalchemy.engine.Engine:show standard_conforming_strings
+INFO:sqlalchemy.engine.Engine:[raw sql] {}
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.id AS users_id, users.username AS users_username, users.name AS users_name, users.email AS users_email, users.password AS users_password, users.enabled AS users_enabled 
+FROM users 
+WHERE users.email = %(email_1)s AND users.id != %(id_1)s 
+ LIMIT %(param_1)s
+INFO:sqlalchemy.engine.Engine:[generated in 0.00014s] {'email_1': 'juan@example.com', 'id_1': 1, 'param_1': 1}
+INFO:sqlalchemy.engine.Engine:UPDATE users SET username=%(username)s, name=%(name)s, email=%(email)s, password=%(password)s, enabled=%(enabled)s WHERE users.id = %(id_1)s
+INFO:sqlalchemy.engine.Engine:[generated in 0.00031s] {'username': 'pedro', 'name': 'Pedro', 'email': 'juan@example.com', 'password': 'string', 'enabled': True, 'id_1': 1}
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.id AS users_id, users.username AS users_username, users.name AS users_name, users.email AS users_email, users.password AS users_password, users.enabled AS users_enabled 
+FROM users 
+WHERE users.id = %(id_1)s 
+ LIMIT %(param_1)s
+INFO:sqlalchemy.engine.Engine:[generated in 0.00030s] {'id_1': 1, 'param_1': 1}
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.id AS users_id, users.username AS users_username, users.name AS users_name, users.email AS users_email, users.password AS users_password, users.enabled AS users_enabled 
+FROM users 
+WHERE users.email = %(email_1)s AND users.id != %(id_1)s 
+ LIMIT %(param_1)s
+INFO:sqlalchemy.engine.Engine:[cached since 19.02s ago] {'email_1': 'raul@example.com', 'id_1': 1, 'param_1': 1}
+INFO:sqlalchemy.engine.Engine:UPDATE users SET username=%(username)s, name=%(name)s, email=%(email)s, password=%(password)s, enabled=%(enabled)s WHERE users.id = %(id_1)s
+INFO:sqlalchemy.engine.Engine:[cached since 19.02s ago] {'username': None, 'name': 'Raul', 'email': 'raul@example.com', 'password': 'string', 'enabled': True, 'id_1': 1}
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+ERROR:root:(psycopg2.errors.NotNullViolation) null value in column "username" of relation "users" violates not-null constraint
+DETAIL:  Failing row contains (1, null, Raul, raul@example.com, string, t).
+
+[SQL: UPDATE users SET username=%(username)s, name=%(name)s, email=%(email)s, password=%(password)s, enabled=%(enabled)s WHERE users.id = %(id_1)s]
+[parameters: {'username': None, 'name': 'Raul', 'email': 'raul@example.com', 'password': 'string', 'enabled': True, 'id_1': 1}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+ERROR:uvicorn.error:Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1900, in _execute_context
+    self.dialect.do_execute(
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.NotNullViolation: null value in column "username" of relation "users" violates not-null constraint
+DETAIL:  Failing row contains (1, null, Raul, raul@example.com, string, t).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/uvicorn/protocols/http/h11_impl.py", line 404, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/uvicorn/middleware/proxy_headers.py", line 78, in __call__
+    return await self.app(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/fastapi/applications.py", line 269, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/applications.py", line 124, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/exceptions.py", line 93, in __call__
+    raise exc
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/exceptions.py", line 82, in __call__
+    await self.app(scope, receive, sender)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 21, in __call__
+    raise e
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/routing.py", line 670, in __call__
+    await route.handle(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/routing.py", line 266, in handle
+    await self.app(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/routing.py", line 65, in app
+    response = await func(request)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/fastapi/routing.py", line 231, in app
+    raw_response = await run_endpoint_function(
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/fastapi/routing.py", line 160, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/./routes/user_route.py", line 47, in update_user
+    return user_service.update_user(user, id, db)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/./service/user_service.py", line 52, in update_user
+    user_update.update(user.__dict__)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 3297, in update
+    result = self.session.execute(
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 1712, in execute
+    result = conn._execute_20(statement, params or {}, execution_options)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1705, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 333, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1572, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1943, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2124, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1900, in _execute_context
+    self.dialect.do_execute(
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (psycopg2.errors.NotNullViolation) null value in column "username" of relation "users" violates not-null constraint
+DETAIL:  Failing row contains (1, null, Raul, raul@example.com, string, t).
+
+[SQL: UPDATE users SET username=%(username)s, name=%(name)s, email=%(email)s, password=%(password)s, enabled=%(enabled)s WHERE users.id = %(id_1)s]
+[parameters: {'username': None, 'name': 'Raul', 'email': 'raul@example.com', 'password': 'string', 'enabled': True, 'id_1': 1}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [45365]
+INFO:uvicorn.error:Started server process [45493]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [45493]
+INFO:uvicorn.error:Started server process [45553]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [45553]
+INFO:uvicorn.error:Started server process [45733]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+INFO:sqlalchemy.engine.Engine:select pg_catalog.version()
+INFO:sqlalchemy.engine.Engine:[raw sql] {}
+INFO:sqlalchemy.engine.Engine:select current_schema()
+INFO:sqlalchemy.engine.Engine:[raw sql] {}
+INFO:sqlalchemy.engine.Engine:show standard_conforming_strings
+INFO:sqlalchemy.engine.Engine:[raw sql] {}
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.id AS users_id, users.username AS users_username, users.name AS users_name, users.email AS users_email, users.password AS users_password, users.enabled AS users_enabled 
+FROM users 
+WHERE users.email = %(email_1)s AND users.id != %(id_1)s 
+ LIMIT %(param_1)s
+INFO:sqlalchemy.engine.Engine:[generated in 0.00023s] {'email_1': 'raul@example.com', 'id_1': 1, 'param_1': 1}
+INFO:sqlalchemy.engine.Engine:UPDATE users SET name=%(name)s, email=%(email)s, password=%(password)s, enabled=%(enabled)s WHERE users.id = %(id_1)s
+INFO:sqlalchemy.engine.Engine:[generated in 0.00019s] {'name': 'Raul', 'email': 'raul@example.com', 'password': 'string', 'enabled': True, 'id_1': 1}
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.id AS users_id, users.username AS users_username, users.name AS users_name, users.email AS users_email, users.password AS users_password, users.enabled AS users_enabled 
+FROM users 
+WHERE users.id = %(id_1)s 
+ LIMIT %(param_1)s
+INFO:sqlalchemy.engine.Engine:[generated in 0.00010s] {'id_1': 1, 'param_1': 1}
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [45733]
+INFO:uvicorn.error:Started server process [45826]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+INFO:sqlalchemy.engine.Engine:select pg_catalog.version()
+INFO:sqlalchemy.engine.Engine:[raw sql] {}
+INFO:sqlalchemy.engine.Engine:select current_schema()
+INFO:sqlalchemy.engine.Engine:[raw sql] {}
+INFO:sqlalchemy.engine.Engine:show standard_conforming_strings
+INFO:sqlalchemy.engine.Engine:[raw sql] {}
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.id AS users_id, users.username AS users_username, users.name AS users_name, users.email AS users_email, users.password AS users_password, users.enabled AS users_enabled 
+FROM users 
+WHERE users.email = %(email_1)s AND users.id != %(id_1)s 
+ LIMIT %(param_1)s
+INFO:sqlalchemy.engine.Engine:[generated in 0.00044s] {'email_1': 'juan@example.com', 'id_1': 1, 'param_1': 1}
+INFO:sqlalchemy.engine.Engine:UPDATE users SET name=%(name)s, email=%(email)s, password=%(password)s, enabled=%(enabled)s WHERE users.id = %(id_1)s
+INFO:sqlalchemy.engine.Engine:[generated in 0.00022s] {'name': 'Juan', 'email': 'juan@example.com', 'password': 'string', 'enabled': False, 'id_1': 1}
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.id AS users_id, users.username AS users_username, users.name AS users_name, users.email AS users_email, users.password AS users_password, users.enabled AS users_enabled 
+FROM users 
+WHERE users.id = %(id_1)s 
+ LIMIT %(param_1)s
+INFO:sqlalchemy.engine.Engine:[generated in 0.00014s] {'id_1': 1, 'param_1': 1}
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [45826]
+INFO:uvicorn.error:Started server process [46064]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [46064]
+INFO:uvicorn.error:Started server process [46118]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [46118]
+INFO:uvicorn.error:Started server process [46147]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [46147]
+INFO:uvicorn.error:Started server process [46169]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+INFO:sqlalchemy.engine.Engine:select pg_catalog.version()
+INFO:sqlalchemy.engine.Engine:[raw sql] {}
+INFO:sqlalchemy.engine.Engine:select current_schema()
+INFO:sqlalchemy.engine.Engine:[raw sql] {}
+INFO:sqlalchemy.engine.Engine:show standard_conforming_strings
+INFO:sqlalchemy.engine.Engine:[raw sql] {}
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.id AS users_id, users.username AS users_username, users.name AS users_name, users.email AS users_email, users.password AS users_password, users.enabled AS users_enabled 
+FROM users 
+WHERE users.email = %(email_1)s 
+ LIMIT %(param_1)s
+INFO:sqlalchemy.engine.Engine:[generated in 0.00018s] {'email_1': 'user@example.com', 'param_1': 1}
+DEBUG:passlib.handlers.bcrypt:detected 'bcrypt' backend, version '4.0.0'
+DEBUG:passlib.handlers.bcrypt:'bcrypt' backend lacks $2$ support, enabling workaround
+INFO:sqlalchemy.engine.Engine:INSERT INTO users (username, name, email, password, enabled) VALUES (%(username)s, %(name)s, %(email)s, %(password)s, %(enabled)s) RETURNING users.id
+INFO:sqlalchemy.engine.Engine:[generated in 0.00022s] {'username': 'string', 'name': 'string', 'email': 'user@example.com', 'password': '$2b$12$XPS9EOPAuy5tiqDBoYTUCu1M/XbWvYWB1Yewm3nip60XXE7UGGLj.', 'enabled': True}
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.id, users.username, users.name, users.email, users.password, users.enabled 
+FROM users 
+WHERE users.id = %(pk_1)s
+INFO:sqlalchemy.engine.Engine:[generated in 0.00021s] {'pk_1': 2}
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.id AS users_id, users.username AS users_username, users.name AS users_name, users.email AS users_email, users.password AS users_password, users.enabled AS users_enabled 
+FROM users 
+ LIMIT %(param_1)s OFFSET %(param_2)s
+INFO:sqlalchemy.engine.Engine:[generated in 0.00016s] {'param_1': 20, 'param_2': 0}
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.id AS users_id, users.username AS users_username, users.name AS users_name, users.email AS users_email, users.password AS users_password, users.enabled AS users_enabled 
+FROM users 
+WHERE users.id = %(id_1)s 
+ LIMIT %(param_1)s
+INFO:sqlalchemy.engine.Engine:[generated in 0.00023s] {'id_1': 2, 'param_1': 1}
+INFO:sqlalchemy.engine.Engine:DELETE FROM users WHERE users.id = %(id)s
+INFO:sqlalchemy.engine.Engine:[generated in 0.00023s] {'id': 2}
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.id AS users_id, users.username AS users_username, users.name AS users_name, users.email AS users_email, users.password AS users_password, users.enabled AS users_enabled 
+FROM users 
+WHERE users.id = %(id_1)s 
+ LIMIT %(param_1)s
+INFO:sqlalchemy.engine.Engine:[cached since 3.628s ago] {'id_1': 2, 'param_1': 1}
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [46169]

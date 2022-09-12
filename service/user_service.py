@@ -1,3 +1,4 @@
+from sqlalchemy import and_
 from sqlalchemy.orm import Session
 
 from fastapi import HTTPException, status
@@ -18,10 +19,11 @@ def get_user_by_id(user_id: int, db: Session):
 
 
 def get_user_by_email(db: Session, email: str, user_id: int = None):
-    db_user = db.query(UserModel).filter(UserModel.email == email)
+    all_filters = [UserModel.email == email]
     if user_id is not None:
-        db_user.filter(UserModel.id == user_id)
-    return db_user.first()
+        all_filters.append(UserModel.id != user_id)
+    db_user = db.query(UserModel).filter(*all_filters).first()
+    return db_user
 
 
 def create_user(user: user_schema.UserCreate, db: Session):
@@ -38,4 +40,23 @@ def create_user(user: user_schema.UserCreate, db: Session):
     db.add(db_user)
     db.commit()
     db.refresh(db_user)
+    return db_user
+
+
+def update_user(user: user_schema.UserUpdate, user_id: int, db: Session):
+    if get_user_by_email(db, user.email, user_id):
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Email already registered")
+
+    db.query(UserModel).filter(UserModel.id == user_id)\
+        .update(user.dict(exclude_none=True))
+    db.commit()
+    db_user = get_user_by_id(user_id, db)
+    return db_user
+
+
+def delete_user(user_id: int, db: Session):
+    db_user = get_user_by_id(user_id, db)
+
+    db.delete(db_user)
+    db.commit()
     return db_user
