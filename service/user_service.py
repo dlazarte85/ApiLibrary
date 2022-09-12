@@ -23,7 +23,7 @@ def get_user_by_id(user_id: int, db: Session):
     return db_user
 
 
-def get_user_by_email(db: Session, email: str, user_id: int = None):
+def get_user_by_email(email: str, db: Session, user_id: int = None):
     all_filters = [UserModel.email == email]
     if user_id is not None:
         all_filters.append(UserModel.id != user_id)
@@ -32,7 +32,7 @@ def get_user_by_email(db: Session, email: str, user_id: int = None):
 
 
 def create_user(user: user_schema.UserCreate, db: Session):
-    if get_user_by_email(db, user.email):
+    if get_user_by_email(user.email, db):
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Email already registered")
 
     db_user = UserModel(
@@ -49,14 +49,15 @@ def create_user(user: user_schema.UserCreate, db: Session):
 
 
 def update_user(user: user_schema.UserUpdate, user_id: int, db: Session):
-    if get_user_by_email(db, user.email, user_id):
+    db_user = get_user_by_id(user_id, db)
+    if get_user_by_email(user.email, db, user_id):
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Email already registered")
 
     user.password = get_password_hash(user.password)
     db.query(UserModel).filter(UserModel.id == user_id)\
         .update(user.dict(exclude_none=True))
     db.commit()
-    db_user = get_user_by_id(user_id, db)
+    db.refresh(db_user)
     return db_user
 
 
