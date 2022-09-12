@@ -19,3 +19,7 @@ passlib[bcrypt]
 #for testing
 pytest
 requests
+
+# JWT validation
+python-jose[cryptography]
+python-multipart

@@ -1,10 +1,15 @@
-from sqlalchemy import and_
 from sqlalchemy.orm import Session
 
 from fastapi import HTTPException, status
 from models.user_model import UserModel
 from schemas import user_schema
 from service.auth_service import get_password_hash
+
+
+def get_user(username: str, db: Session):
+    return db.query(UserModel).filter(
+        (UserModel.username == username) | (UserModel.email == username)
+    ).first()
 
 
 def get_users(db: Session, skip: int = 0, limit: int = 100):
@@ -47,6 +52,7 @@ def update_user(user: user_schema.UserUpdate, user_id: int, db: Session):
     if get_user_by_email(db, user.email, user_id):
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Email already registered")
 
+    user.password = get_password_hash(user.password)
     db.query(UserModel).filter(UserModel.id == user_id)\
         .update(user.dict(exclude_none=True))
     db.commit()

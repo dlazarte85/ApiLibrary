@@ -1,6 +1,7 @@
 from fastapi import FastAPI, Request, status
 from fastapi.responses import JSONResponse
 from routes.user_route import route as user_route
+from routes.auth_route import route as auth_route
 import logging
 
 logging.basicConfig(filename='./logs/api.log', encoding='utf-8', level=logging.DEBUG)
@@ -20,3 +21,4 @@ async def catch_exception_handler(request: Request, exc: Exception):
 
 
 app.include_router(user_route)
+app.include_router(auth_route)

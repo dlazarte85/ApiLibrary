@@ -15,5 +15,8 @@ class Settings(BaseSettings):
 
     database_url: str = f"postgresql://{db_user}:{db_pass}@{db_host}:{db_port}/{db_name}"
 
+    secret_key: str = os.getenv('SECRET_KEY')
+    token_expire: int = os.getenv('ACCESS_TOKEN_EXPIRE_MINUTES')
+
 
 settings = Settings()
