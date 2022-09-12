@@ -1334,3 +1334,252 @@ INFO:uvicorn.error:Shutting down
 INFO:uvicorn.error:Waiting for application shutdown.
 INFO:uvicorn.error:Application shutdown complete.
 INFO:uvicorn.error:Finished server process [76758]
+INFO:uvicorn.error:Started server process [79036]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+DEBUG:multipart.multipart:Calling on_field_start with no data
+DEBUG:multipart.multipart:Calling on_field_name with data[0:10]
+DEBUG:multipart.multipart:Calling on_field_data with data[11:19]
+DEBUG:multipart.multipart:Calling on_field_end with no data
+DEBUG:multipart.multipart:Calling on_field_start with no data
+DEBUG:multipart.multipart:Calling on_field_name with data[20:28]
+DEBUG:multipart.multipart:Calling on_field_data with data[29:34]
+DEBUG:multipart.multipart:Calling on_field_end with no data
+DEBUG:multipart.multipart:Calling on_field_start with no data
+DEBUG:multipart.multipart:Calling on_field_name with data[35:43]
+DEBUG:multipart.multipart:Calling on_field_data with data[44:50]
+DEBUG:multipart.multipart:Calling on_field_end with no data
+DEBUG:multipart.multipart:Calling on_end with no data
+DEBUG:passlib.handlers.bcrypt:detected 'bcrypt' backend, version '4.0.0'
+DEBUG:passlib.handlers.bcrypt:'bcrypt' backend lacks $2$ support, enabling workaround
+ERROR:root:Parent instance <ProductModel at 0x7f8a3136bbe0> is not bound to a Session; lazy load operation of attribute 'category' cannot proceed (Background on this error at: https://sqlalche.me/e/14/bhk3)
+ERROR:uvicorn.error:Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/uvicorn/protocols/http/h11_impl.py", line 404, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/uvicorn/middleware/proxy_headers.py", line 78, in __call__
+    return await self.app(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/fastapi/applications.py", line 269, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/applications.py", line 124, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/exceptions.py", line 93, in __call__
+    raise exc
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/exceptions.py", line 82, in __call__
+    await self.app(scope, receive, sender)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 21, in __call__
+    raise e
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/routing.py", line 670, in __call__
+    await route.handle(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/routing.py", line 266, in handle
+    await self.app(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/routing.py", line 65, in app
+    response = await func(request)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/fastapi/routing.py", line 249, in app
+    content = await serialize_response(
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/fastapi/routing.py", line 130, in serialize_response
+    value, errors_ = await run_in_threadpool(  # type: ignore[misc]
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/concurrency.py", line 41, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/anyio/to_thread.py", line 31, in run_sync
+    return await get_asynclib().run_sync_in_worker_thread(
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/anyio/_backends/_asyncio.py", line 937, in run_sync_in_worker_thread
+    return await future
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/anyio/_backends/_asyncio.py", line 867, in run
+    result = context.run(func, *args)
+  File "pydantic/fields.py", line 884, in pydantic.fields.ModelField.validate
+  File "pydantic/fields.py", line 1101, in pydantic.fields.ModelField._validate_singleton
+  File "pydantic/fields.py", line 1148, in pydantic.fields.ModelField._apply_validators
+  File "pydantic/class_validators.py", line 318, in pydantic.class_validators._generic_validator_basic.lambda13
+  File "pydantic/main.py", line 713, in pydantic.main.BaseModel.validate
+  File "pydantic/main.py", line 577, in pydantic.main.BaseModel.from_orm
+  File "pydantic/main.py", line 1055, in pydantic.main.validate_model
+  File "pydantic/utils.py", line 441, in pydantic.utils.GetterDict.get
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/sqlalchemy/orm/attributes.py", line 482, in __get__
+    return self.impl.get(state, dict_)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/sqlalchemy/orm/attributes.py", line 942, in get
+    value = self._fire_loader_callables(state, key, passive)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/sqlalchemy/orm/attributes.py", line 978, in _fire_loader_callables
+    return self.callable_(state, passive)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/sqlalchemy/orm/strategies.py", line 863, in _load_for_state
+    raise orm_exc.DetachedInstanceError(
+sqlalchemy.orm.exc.DetachedInstanceError: Parent instance <ProductModel at 0x7f8a3136bbe0> is not bound to a Session; lazy load operation of attribute 'category' cannot proceed (Background on this error at: https://sqlalche.me/e/14/bhk3)
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [79036]
+INFO:uvicorn.error:Started server process [79473]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [79473]
+INFO:uvicorn.error:Started server process [79484]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [79484]
+INFO:uvicorn.error:Started server process [79486]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [79486]
+INFO:uvicorn.error:Started server process [79554]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [79554]
+INFO:uvicorn.error:Started server process [79591]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+DEBUG:multipart.multipart:Calling on_field_start with no data
+DEBUG:multipart.multipart:Calling on_field_name with data[0:10]
+DEBUG:multipart.multipart:Calling on_field_data with data[11:19]
+DEBUG:multipart.multipart:Calling on_field_end with no data
+DEBUG:multipart.multipart:Calling on_field_start with no data
+DEBUG:multipart.multipart:Calling on_field_name with data[20:28]
+DEBUG:multipart.multipart:Calling on_field_data with data[29:34]
+DEBUG:multipart.multipart:Calling on_field_end with no data
+DEBUG:multipart.multipart:Calling on_field_start with no data
+DEBUG:multipart.multipart:Calling on_field_name with data[35:43]
+DEBUG:multipart.multipart:Calling on_field_data with data[44:50]
+DEBUG:multipart.multipart:Calling on_field_end with no data
+DEBUG:multipart.multipart:Calling on_end with no data
+DEBUG:passlib.handlers.bcrypt:detected 'bcrypt' backend, version '4.0.0'
+DEBUG:passlib.handlers.bcrypt:'bcrypt' backend lacks $2$ support, enabling workaround
+ERROR:root:1 validation error for Product
+response -> category
+  none is not an allowed value (type=type_error.none.not_allowed)
+ERROR:uvicorn.error:Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/uvicorn/protocols/http/h11_impl.py", line 404, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/uvicorn/middleware/proxy_headers.py", line 78, in __call__
+    return await self.app(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/fastapi/applications.py", line 269, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/applications.py", line 124, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/exceptions.py", line 93, in __call__
+    raise exc
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/exceptions.py", line 82, in __call__
+    await self.app(scope, receive, sender)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 21, in __call__
+    raise e
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/routing.py", line 670, in __call__
+    await route.handle(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/routing.py", line 266, in handle
+    await self.app(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/routing.py", line 65, in app
+    response = await func(request)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/fastapi/routing.py", line 249, in app
+    content = await serialize_response(
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/fastapi/routing.py", line 138, in serialize_response
+    raise ValidationError(errors, field.type_)
+pydantic.error_wrappers.ValidationError: 1 validation error for Product
+response -> category
+  none is not an allowed value (type=type_error.none.not_allowed)
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [79591]
+INFO:uvicorn.error:Started server process [79834]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+ERROR:root:1 validation error for Product
+response -> category
+  none is not an allowed value (type=type_error.none.not_allowed)
+ERROR:uvicorn.error:Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/uvicorn/protocols/http/h11_impl.py", line 404, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/uvicorn/middleware/proxy_headers.py", line 78, in __call__
+    return await self.app(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/fastapi/applications.py", line 269, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/applications.py", line 124, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/exceptions.py", line 93, in __call__
+    raise exc
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/exceptions.py", line 82, in __call__
+    await self.app(scope, receive, sender)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 21, in __call__
+    raise e
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/routing.py", line 670, in __call__
+    await route.handle(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/routing.py", line 266, in handle
+    await self.app(scope, receive, send)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/starlette/routing.py", line 65, in app
+    response = await func(request)
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/fastapi/routing.py", line 249, in app
+    content = await serialize_response(
+  File "/home/diego/proyectos/grow/python/ApiLibrary/venv/lib/python3.10/site-packages/fastapi/routing.py", line 138, in serialize_response
+    raise ValidationError(errors, field.type_)
+pydantic.error_wrappers.ValidationError: 1 validation error for Product
+response -> category
+  none is not an allowed value (type=type_error.none.not_allowed)
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [79834]
+INFO:uvicorn.error:Started server process [80759]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+DEBUG:multipart.multipart:Calling on_field_start with no data
+DEBUG:multipart.multipart:Calling on_field_name with data[0:10]
+DEBUG:multipart.multipart:Calling on_field_data with data[11:19]
+DEBUG:multipart.multipart:Calling on_field_end with no data
+DEBUG:multipart.multipart:Calling on_field_start with no data
+DEBUG:multipart.multipart:Calling on_field_name with data[20:28]
+DEBUG:multipart.multipart:Calling on_field_data with data[29:34]
+DEBUG:multipart.multipart:Calling on_field_end with no data
+DEBUG:multipart.multipart:Calling on_field_start with no data
+DEBUG:multipart.multipart:Calling on_field_name with data[35:43]
+DEBUG:multipart.multipart:Calling on_field_data with data[44:50]
+DEBUG:multipart.multipart:Calling on_field_end with no data
+DEBUG:multipart.multipart:Calling on_end with no data
+DEBUG:passlib.handlers.bcrypt:detected 'bcrypt' backend, version '4.0.0'
+DEBUG:passlib.handlers.bcrypt:'bcrypt' backend lacks $2$ support, enabling workaround
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [80759]
+INFO:uvicorn.error:Started server process [81019]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [81019]
+INFO:uvicorn.error:Started server process [81042]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [81042]

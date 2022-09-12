@@ -3,6 +3,7 @@ from fastapi.responses import JSONResponse
 from routes.user_route import route as user_route
 from routes.auth_route import route as auth_route
 from routes.category_route import route as category_route
+from routes.product_route import route as product_route
 import logging
 
 logging.basicConfig(filename='./logs/api.log', encoding='utf-8', level=logging.DEBUG)
@@ -24,3 +25,4 @@ async def catch_exception_handler(request: Request, exc: Exception):
 app.include_router(user_route)
 app.include_router(auth_route)
 app.include_router(category_route)
+app.include_router(product_route)

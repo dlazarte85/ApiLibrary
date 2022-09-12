@@ -13,6 +13,7 @@ route = APIRouter(prefix="/api", tags=["users"])
     "/users",
     response_model=list[user_schema.User],
     status_code=status.HTTP_200_OK,
+    description="Show all users"
 )
 async def get_users(db: Session = Depends(get_db), skip: int = 0, limit: int = 20):
     users = user_service.get_users(db, skip=skip, limit=limit)
