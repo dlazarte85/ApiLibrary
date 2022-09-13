@@ -11,8 +11,9 @@ route = APIRouter(prefix="/api", tags=["users"])
 
 @route.get(
     "/users",
-    response_model=list[user_schema.User],
     status_code=status.HTTP_200_OK,
+    response_model=list[user_schema.User],
+    dependencies=[Depends(auth_service.get_current_user)],
     description="Show all users"
 )
 async def get_users(db: Session = Depends(get_db), skip: int = 0, limit: int = 20):
@@ -34,6 +35,7 @@ async def read_users_me(current_user: user_schema.User = Depends(auth_service.ge
     "/users/{id}",
     status_code=status.HTTP_200_OK,
     response_model=user_schema.User,
+    dependencies=[Depends(auth_service.get_current_user)],
     description="Show a user"
 )
 async def get_user(id: int, db: Session = Depends(get_db)):
@@ -43,6 +45,7 @@ async def get_user(id: int, db: Session = Depends(get_db)):
 @route.post(
     "/users",
     status_code=status.HTTP_201_CREATED,
+    response_model=user_schema.User,
     description="Create a new user"
 )
 async def create_user(user: user_schema.UserCreate, db: Session = Depends(get_db)):
@@ -53,6 +56,7 @@ async def create_user(user: user_schema.UserCreate, db: Session = Depends(get_db
     "/users/{id}",
     status_code=status.HTTP_200_OK,
     response_model=user_schema.User,
+    dependencies=[Depends(auth_service.get_current_user)],
     description="Update a user"
 )
 async def update_user(id: int, user: user_schema.UserUpdate, db: Session = Depends(get_db)):
@@ -63,6 +67,7 @@ async def update_user(id: int, user: user_schema.UserUpdate, db: Session = Depen
     "/users/{id}",
     status_code=status.HTTP_200_OK,
     response_model=user_schema.User,
+    dependencies=[Depends(auth_service.get_current_user)],
     description="Delete a user"
 )
 async def delete_user(id: int, db: Session = Depends(get_db)):
