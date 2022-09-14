@@ -1,5 +1,5 @@
 from schemas import product_schema
-from schemas.generic_response_schema import GenericResponse
+from schemas.generic_response_schema import GenericResponse, GenericErrorResponse
 from service import product_service, auth_service
 from fastapi import APIRouter, Depends, status, HTTPException
 from sqlalchemy.orm import Session
@@ -8,13 +8,14 @@ from utils import api_response
 
 route = APIRouter(prefix="/api",
                   dependencies=[Depends(auth_service.get_current_user)],
+                  responses={422: {"model": GenericErrorResponse}},
                   tags=["products"])
 
 
 @route.get(
     "/products",
     status_code=status.HTTP_200_OK,
-    response_model=list[product_schema.Product],
+    response_model=GenericResponse[list[product_schema.Product]],
     description="Show all products"
 )
 def get_products(db: Session = Depends(get_db), skip: int = 0, limit: int = 20):

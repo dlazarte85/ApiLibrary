@@ -16,4 +16,12 @@ class ProductModel(Base):
     category = relationship("CategoryModel", back_populates="products")
 
     def __repr__(self):
-        return f"Product(id={self.id}, category_id={self.category_id}, name={self.name}, price={self.price}, stock={self.stock}, enabled={self.enable}, deleted={self.deleted})"
+        return f"Product(" \
+               f"id={self.id}, " \
+               f"category_id={self.category_id}, " \
+               f"name={self.name}, " \
+               f"price={self.price}, " \
+               f"stock={self.stock}, " \
+               f"enabled={self.enabled}, " \
+               f"deleted={self.deleted}, " \
+               f"category={self.category})"

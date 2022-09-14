@@ -1,5 +1,9 @@
 from fastapi import FastAPI, Request, status
+from fastapi.encoders import jsonable_encoder
+from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
+from pydantic import error_wrappers
+
 from routes.user_route import route as user_route
 from routes.auth_route import route as auth_route
 from routes.category_route import route as category_route
@@ -12,13 +16,24 @@ app = FastAPI()
 
 
 @app.exception_handler(Exception)
-async def catch_exception_handler(request: Request, exc: Exception):
+async def catch_exception_handler(request: Request, exc: Exception) -> JSONResponse:
 
     logging.error(exc)
 
     return JSONResponse(
         status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
         content={"status": False, "error": "An error has occurred, please try later"},
+    )
+
+
+@app.exception_handler(RequestValidationError)
+async def catch_exception_handler(request: Request, exc: RequestValidationError) -> JSONResponse:
+
+    logging.error(exc)
+
+    return JSONResponse(
+        status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+        content={"status": False, "error": jsonable_encoder(exc.errors())},
     )
 
 

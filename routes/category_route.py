@@ -1,5 +1,5 @@
 from schemas import category_schema
-from schemas.generic_response_schema import GenericResponse
+from schemas.generic_response_schema import GenericResponse, GenericErrorResponse
 from service import category_service, auth_service
 from fastapi import APIRouter, Depends, status, HTTPException
 from sqlalchemy.orm import Session
@@ -8,6 +8,7 @@ from utils import api_response
 
 route = APIRouter(prefix="/api",
                   dependencies=[Depends(auth_service.get_current_user)],
+                  responses={422: {"model": GenericErrorResponse}},
                   tags=["categories"])
 
 

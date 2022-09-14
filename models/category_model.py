@@ -14,4 +14,4 @@ class CategoryModel(Base):
     products = relationship("ProductModel", back_populates="category")
 
     def __repr__(self):
-        return f"Category(id={self.id}, name={self.name}, enabled={self.enable}, deleted={self.deleted})"
+        return f"Category(id={self.id}, name={self.name}, enabled={self.enabled}, deleted={self.deleted})"

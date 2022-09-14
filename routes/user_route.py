@@ -3,12 +3,14 @@ from sqlalchemy.orm import Session
 
 from config.db import get_db
 from schemas import user_schema
-from schemas.generic_response_schema import GenericResponse
+from schemas.generic_response_schema import GenericResponse, GenericErrorResponse
 from service import user_service
 from service import auth_service
 from utils import api_response
 
-route = APIRouter(prefix="/api", tags=["users"])
+route = APIRouter(prefix="/api",
+                  responses={422: {"model": GenericErrorResponse}},
+                  tags=["users"],)
 
 
 @route.get(
