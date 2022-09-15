@@ -1,9 +1,15 @@
+import os
+
 from sqlalchemy.orm import Session
 from fastapi import HTTPException, status
 
+from config.db import session_scope
 from models.product_model import ProductModel
 from schemas import product_schema
 from service import category_service
+
+import string
+import random
 
 
 def get_product(db: Session, text: str):
@@ -28,7 +34,7 @@ def get_products(db: Session, skip: int = 0, limit: int = 100):
     return db.query(ProductModel).offset(skip).limit(limit).all()
 
 
-def create_product(product: product_schema.ProductBase,db: Session):
+def create_product(product: product_schema.ProductCreate, db: Session):
     if get_product_by_name(product.name, db):
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Product name already exists")
 
@@ -69,3 +75,42 @@ def delete_product(product_id: int, db: Session):
     db.delete(db_product)
     db.commit()
     return db_product
+
+
+def seed_products(amount: int, db: Session):
+    for i in range(amount):
+        name = ''.join(random.choice(string.ascii_letters) for i in range(random.randint(10, 15)))
+        price = ''.join(random.choice(string.digits) for i in range(4))
+        stock = ''.join(random.choice(string.digits) for i in range(2))
+        data = {
+            "category_id": 1,
+            "name": name,
+            "price": price,
+            "stock": stock,
+            "enabled": True
+        }
+        db_product = ProductModel(**data)
+        db.add(db_product)
+
+    db.commit()
+    return {"message": "Products created successfully"}
+
+
+def seed_products_thread_process(amount: int):
+    with session_scope() as s:
+        for i in range(amount):
+            name = ''.join(random.choice(string.ascii_letters) for i in range(random.randint(10, 15)))
+            price = ''.join(random.choice(string.digits) for i in range(4))
+            stock = ''.join(random.choice(string.digits) for i in range(2))
+            data = {
+                "category_id": 1,
+                "name": name,
+                "price": price,
+                "stock": stock,
+                "enabled": True
+            }
+            db_product = ProductModel(**data)
+            s.add(db_product)
+
+    print(f"Process Id: {os.getpid()}")
+    return {"message": "Products created successfully"}

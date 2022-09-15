@@ -2,6 +2,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from config.settings import settings
+from contextlib import contextmanager
 
 DB_NAME = settings.db_name
 DB_USER = settings.db_user
@@ -25,3 +26,16 @@ def get_db():
         yield db
     finally:
         db.close()
+
+
+@contextmanager
+def session_scope():
+    session = SessionLocal()
+    try:
+        yield session
+        session.commit()
+    except Exception:
+        session.rollback()
+        raise
+    finally:
+        session.close()
