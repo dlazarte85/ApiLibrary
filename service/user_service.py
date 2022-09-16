@@ -53,7 +53,8 @@ def update_user(user: user_schema.UserUpdate, user_id: int, db: Session):
     if get_user_by_email(user.email, db, user_id):
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Email already registered")
 
-    user.password = get_password_hash(user.password)
+    if user.password is not None:
+        user.password = get_password_hash(user.password)
     db.query(UserModel).filter(UserModel.id == user_id)\
         .update(user.dict(exclude_none=True))
     db.commit()

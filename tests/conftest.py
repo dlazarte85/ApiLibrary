@@ -2,21 +2,27 @@ import pytest
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import sessionmaker, Session
 
 import sys
 import os
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))) 
+
+
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 # this is to include dir in sys.path so that we can import from db,main.py
 
 from models import Base
 from config.db import get_db
 from routes.user_route import route as user_route
+from routes.auth_route import route as auth_route
+from config.settings import settings
+from tests.utils.users import authentication_token_from_email
 
 
 def start_application():
     app = FastAPI()
     app.include_router(user_route)
+    app.include_router(auth_route)
     return app
 
 
@@ -69,3 +75,10 @@ def client(
     app.dependency_overrides[get_db] = _get_test_db
     with TestClient(app) as client:
         yield client
+
+
+@pytest.fixture(scope="function")
+def normal_user_token_headers(client: TestClient, db_session: Session):
+    return authentication_token_from_email(
+        client=client, email=settings.test_user_email, db=db_session
+    )

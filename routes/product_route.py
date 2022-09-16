@@ -109,7 +109,6 @@ async def seed_products_threading(n_threads: int):
     time_start = time.time()
     threads = []
     amount = 50000 // n_threads
-    print(amount)
     for i in range(n_threads):
         t = threading.Thread(target=product_service.seed_products_thread_process, args=(amount,))
         threads.append(t)
@@ -124,16 +123,15 @@ async def seed_products_threading(n_threads: int):
 
 
 @route.post(
-    "/products/seed_products_multipr/{n_threads}",
+    "/products/seed_products_multipr/{n_process}",
     status_code=status.HTTP_200_OK,
     description="Seed a product"
 )
-async def seed_products_multipr(n_threads: int):
+async def seed_products_multipr(n_process: int):
     time_start = time.time()
     process = []
-    amount = 50000 // n_threads
-    print(amount)
-    for i in range(n_threads):
+    amount = 50000 // n_process
+    for i in range(n_process):
         p = Process(target=product_service.seed_products_thread_process, args=(amount,))
         process.append(p)
         p.start()

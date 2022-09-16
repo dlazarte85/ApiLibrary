@@ -18,5 +18,7 @@ class Settings(BaseSettings):
     secret_key: str = os.getenv('SECRET_KEY')
     token_expire: int = os.getenv('ACCESS_TOKEN_EXPIRE_MINUTES')
 
+    test_user_email = str = os.getenv('TEST_USER_EMAIL')
+
 
 settings = Settings()

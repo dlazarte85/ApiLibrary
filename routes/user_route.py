@@ -59,7 +59,7 @@ async def get_user(id: int, db: Session = Depends(get_db)):
 async def create_user(user: user_schema.UserCreate, db: Session = Depends(get_db)):
     try:
         user = user_service.create_user(user, db)
-        return api_response.success_response(user)
+        return api_response.success_response(user, code=status.HTTP_201_CREATED)
     except HTTPException as e:
         return api_response.error_response(e.detail, e.status_code)
 

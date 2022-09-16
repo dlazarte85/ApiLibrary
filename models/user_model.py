@@ -13,4 +13,8 @@ class UserModel(Base):
     enabled = Column(Boolean, default=True)
 
     def __repr__(self):
-        return f"User(id={self.id}, username={self.username}, name={self.name}, email={self.email}, enabled={self.enable})"
+        return f"User(id={self.id}, " \
+               f"username={self.username}, " \
+               f"name={self.name}, " \
+               f"email={self.email}, " \
+               f"enabled={self.enabled})"
