@@ -50,7 +50,7 @@ async def get_category(id: int, db: Session = Depends(get_db)):
 async def create_category(category: category_schema.CategoryBase, db: Session = Depends(get_db)):
     try:
         category = category_service.create_category(category, db)
-        return api_response.success_response(category)
+        return api_response.success_response(category, code=status.HTTP_201_CREATED)
     except HTTPException as e:
         return api_response.error_response(e.detail, e.status_code)
 

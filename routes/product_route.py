@@ -47,10 +47,10 @@ async def get_product(id: int, db: Session = Depends(get_db)):
     response_model=GenericResponse[product_schema.Product],
     description="Create a new product"
 )
-async def create_product(product: product_schema.ProductCreate, db: Session = Depends(session_scope())):
+async def create_product(product: product_schema.ProductCreate, db: Session = Depends(get_db)):
     try:
         product = product_service.create_product(product, db)
-        return api_response.success_response(product)
+        return api_response.success_response(product, code=status.HTTP_201_CREATED)
     except HTTPException as e:
         return api_response.error_response(e.detail, e.status_code)
 
@@ -84,15 +84,14 @@ async def delete_product(id: int, db: Session = Depends(get_db)):
 
 
 @route.post(
-    "/products/seed_products",
+    "/products/seed_products/{n_records}",
     status_code=status.HTTP_200_OK,
     description="Seed a product"
 )
-async def seed_products(db: Session = Depends(get_db)):
+async def seed_products(n_records: int, db: Session = Depends(get_db)):
     try:
         time_start = time.time()
-        amount = 50000
-        response = product_service.seed_products(amount, db)
+        response = product_service.seed_products(n_records, db)
         time_end = time.time() - time_start
         response["time"] = time_end
         return response
@@ -101,14 +100,14 @@ async def seed_products(db: Session = Depends(get_db)):
 
 
 @route.post(
-    "/products/seed_products_threading/{n_threads}",
+    "/products/seed_products_threading/{n_records}/{n_threads}",
     status_code=status.HTTP_200_OK,
     description="Seed a product"
 )
-async def seed_products_threading(n_threads: int):
+async def seed_products_threading(n_records: int, n_threads: int):
     time_start = time.time()
     threads = []
-    amount = 50000 // n_threads
+    amount = n_records // n_threads
     for i in range(n_threads):
         t = threading.Thread(target=product_service.seed_products_thread_process, args=(amount,))
         threads.append(t)
@@ -123,14 +122,14 @@ async def seed_products_threading(n_threads: int):
 
 
 @route.post(
-    "/products/seed_products_multipr/{n_process}",
+    "/products/seed_products_multipr/{n_records}/{n_process}",
     status_code=status.HTTP_200_OK,
     description="Seed a product"
 )
-async def seed_products_multipr(n_process: int):
+async def seed_products_multipr(n_records: int, n_process: int):
     time_start = time.time()
     process = []
-    amount = 50000 // n_process
+    amount = n_records // n_process
     for i in range(n_process):
         p = Process(target=product_service.seed_products_thread_process, args=(amount,))
         process.append(p)

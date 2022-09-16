@@ -71,14 +71,15 @@ def update_product(product: product_schema.ProductUpdate, product_id: int, db: S
 
 def delete_product(product_id: int, db: Session):
     db_product = get_product_by_id(product_id, db)
+    db_product.deleted = True
 
-    db.delete(db_product)
     db.commit()
+    db.refresh(db_product)
     return db_product
 
 
-def seed_products(amount: int, db: Session):
-    for i in range(amount):
+def seed_products(n_records: int, db: Session):
+    for i in range(n_records):
         name = ''.join(random.choice(string.ascii_letters) for i in range(random.randint(10, 15)))
         price = ''.join(random.choice(string.digits) for i in range(4))
         stock = ''.join(random.choice(string.digits) for i in range(2))

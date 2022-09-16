@@ -15,6 +15,8 @@ from models import Base
 from config.db import get_db
 from routes.user_route import route as user_route
 from routes.auth_route import route as auth_route
+from routes.product_route import route as product_route
+from routes.category_route import route as category_route
 from config.settings import settings
 from tests.utils.users import authentication_token_from_email
 
@@ -23,6 +25,8 @@ def start_application():
     app = FastAPI()
     app.include_router(user_route)
     app.include_router(auth_route)
+    app.include_router(product_route)
+    app.include_router(category_route)
     return app
 
 

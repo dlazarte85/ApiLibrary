@@ -1,7 +1,5 @@
 import json
 
-from tests.conftest import normal_user_token_headers
-
 data_create = {
     "username": "testuser",
     "name": "Test User",
