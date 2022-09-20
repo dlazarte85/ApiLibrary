@@ -1,17 +1,10 @@
 import json
-
-data_create = {
-    "username": "testuser",
-    "name": "Test User",
-    "email": "testuser@nofoobar.com",
-    "enabled": True,
-    "password": "pass_testing"
-}
+from tests.utils.db_objects import user_data_create
 
 
 def test_get_user_return_ok(client, normal_user_token_headers):
     # Create a new user
-    client.post("/api/users", json.dumps(data_create))
+    client.post("/api/users", json.dumps(user_data_create))
     # Test get user
     r = client.get('/api/users/1', headers=normal_user_token_headers)
     response = r.json()
@@ -20,7 +13,7 @@ def test_get_user_return_ok(client, normal_user_token_headers):
 
 
 def test_create_user_return_ok(client):
-    r = client.post("/api/users", json.dumps(data_create))
+    r = client.post("/api/users", json.dumps(user_data_create))
     response = r.json()
     assert r.status_code == 201
     assert response["status"] == True
@@ -31,7 +24,7 @@ def test_create_user_return_ok(client):
 
 def test_update_user_return_ok(client, normal_user_token_headers):
     # Create a new user
-    r = client.post("/api/users", data=json.dumps(data_create))
+    r = client.post("/api/users", data=json.dumps(user_data_create))
     response = r.json()
     user_id = response['data']['id']
     data_update = {

@@ -1,3 +1,6 @@
+from fastapi import Request
+
+from models import UserModel
 from schemas import category_schema
 from schemas.generic_response_schema import GenericResponse, GenericErrorResponse
 from service import category_service, auth_service

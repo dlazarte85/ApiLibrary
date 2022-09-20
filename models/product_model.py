@@ -12,6 +12,9 @@ class ProductModel(Base):
     stock = Column(Integer, nullable=False)
     enabled = Column(Boolean, default=True)
     deleted = Column(Boolean, default=False)
+
+    user_id = Column(Integer, ForeignKey("users.id"))
+    user = relationship("UserModel", back_populates="products")
     category_id = Column(Integer, ForeignKey("categories.id"))
     category = relationship("CategoryModel", back_populates="products")
 

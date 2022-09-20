@@ -1,12 +1,14 @@
 import threading
 import time
 
+from models import UserModel
 from schemas import product_schema
 from schemas.generic_response_schema import GenericResponse, GenericErrorResponse
 from service import product_service, auth_service
 from fastapi import APIRouter, Depends, status, HTTPException
 from sqlalchemy.orm import Session
 from config.db import get_db, session_scope
+from service.auth_service import get_current_user
 from utils import api_response
 from multiprocessing import Process
 
@@ -22,8 +24,13 @@ route = APIRouter(prefix="/api",
     response_model=GenericResponse[list[product_schema.Product]],
     description="Show all products"
 )
-async def get_products(db: Session = Depends(get_db), skip: int = 0, limit: int = 20):
-    products = product_service.get_products(db, skip, limit)
+async def get_products(
+        db: Session = Depends(get_db),
+        skip: int = 0,
+        limit: int = 20,
+        current_user: UserModel = Depends(auth_service.get_current_user)
+):
+    products = product_service.get_products(db, skip, limit, current_user)
     return api_response.success_response(products)
 
 
@@ -33,9 +40,13 @@ async def get_products(db: Session = Depends(get_db), skip: int = 0, limit: int 
     response_model=GenericResponse[product_schema.Product],
     description="Show a product"
 )
-async def get_product(id: int, db: Session = Depends(get_db)):
+async def get_product(
+        id: int,
+        db: Session = Depends(get_db),
+        current_user: UserModel = Depends(auth_service.get_current_user)
+):
     try:
-        product = product_service.get_product_by_id(id, db)
+        product = product_service.get_product_by_id(id, db, current_user)
         return api_response.success_response(product)
     except HTTPException as e:
         return api_response.error_response(e.detail, e.status_code)
@@ -47,9 +58,13 @@ async def get_product(id: int, db: Session = Depends(get_db)):
     response_model=GenericResponse[product_schema.Product],
     description="Create a new product"
 )
-async def create_product(product: product_schema.ProductCreate, db: Session = Depends(get_db)):
+async def create_product(
+        product: product_schema.ProductCreate,
+        db: Session = Depends(get_db),
+        current_user: UserModel = Depends(auth_service.get_current_user)
+):
     try:
-        product = product_service.create_product(product, db)
+        product = product_service.create_product(product, db, current_user)
         return api_response.success_response(product, code=status.HTTP_201_CREATED)
     except HTTPException as e:
         return api_response.error_response(e.detail, e.status_code)
@@ -61,9 +76,14 @@ async def create_product(product: product_schema.ProductCreate, db: Session = De
     response_model=GenericResponse[product_schema.Product],
     description="Update a product"
 )
-async def update_product(id: int, product: product_schema.ProductUpdate, db: Session = Depends(get_db)):
+async def update_product(
+        id: int,
+        product: product_schema.ProductUpdate,
+        db: Session = Depends(get_db),
+        current_user: UserModel = Depends(auth_service.get_current_user)
+):
     try:
-        product = product_service.update_product(product, id, db)
+        product = product_service.update_product(product, id, db, current_user)
         return api_response.success_response(product)
     except HTTPException as e:
         return api_response.error_response(e.detail, e.status_code)
@@ -75,9 +95,13 @@ async def update_product(id: int, product: product_schema.ProductUpdate, db: Ses
     response_model=GenericResponse[product_schema.Product],
     description="Delete a product"
 )
-async def delete_product(id: int, db: Session = Depends(get_db)):
+async def delete_product(
+        id: int,
+        db: Session = Depends(get_db),
+        current_user: UserModel = Depends(auth_service.get_current_user)
+):
     try:
-        product = product_service.delete_product(id, db)
+        product = product_service.delete_product(id, db, current_user)
         return api_response.success_response(product)
     except HTTPException as e:
         return api_response.error_response(e.detail, e.status_code)

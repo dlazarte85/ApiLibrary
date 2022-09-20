@@ -1,17 +1,5 @@
 import json
-
-product_data_create = {
-    "category_id": 1,
-    "name": "Product Name",
-    "price": 4499.99,
-    "stock": 8,
-    "enabled": True
-}
-
-category_data_create = {
-    "name": "Category Name",
-    "enabled": True
-}
+from tests.utils.db_objects import category_data_create, product_data_create
 
 
 def test_get_product_return_ok(client, normal_user_token_headers):

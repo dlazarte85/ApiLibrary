@@ -6,6 +6,7 @@ class UserBase(BaseModel):
     name: str | None = None
     email: EmailStr | None = None
     enabled: bool | None = None
+    is_admin: bool | None = False
 
 
 class UserCreate(UserBase):
@@ -30,6 +31,7 @@ class User(UserBase):
                 "username": "example",
                 "name": "Example Name",
                 "email": "email@example.com",
+                "is_admin": 1,
                 "enabled": 1,
             }
         }
