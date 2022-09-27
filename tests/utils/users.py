@@ -22,6 +22,6 @@ def authentication_token_from_email(client: TestClient, email: str, db: Session)
     name = "Test"
     user = get_user_by_email(email=email, db=db)
     if not user:
-        user_in_create = UserCreate(username=email, name=name, email=email, password=password)
+        user_in_create = UserCreate(username=email, name=name, email=email, password=password, password_confirm=password)
         user = create_user(user=user_in_create, db=db)
     return user_authentication_headers(client=client, email=email, password=password)

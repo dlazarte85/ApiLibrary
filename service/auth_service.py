@@ -68,7 +68,7 @@ async def generate_token(username: str, password: str, db: Session):
     )
 
 
-async def get_current_user(db: Session = Depends(get_db), token: str = Depends(oauth2_scheme), request: Request = Request):
+async def get_current_user(db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)):
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Could not validate credentials",
@@ -86,5 +86,4 @@ async def get_current_user(db: Session = Depends(get_db), token: str = Depends(o
     user = user_service.get_user(username=token_data.username, db=db)
     if user is None:
         raise credentials_exception
-    request.user_id = user.id
     return user

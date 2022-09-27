@@ -7,8 +7,7 @@ from schemas.generic_response_schema import GenericResponse, GenericErrorRespons
 from service import product_service, auth_service
 from fastapi import APIRouter, Depends, status, HTTPException
 from sqlalchemy.orm import Session
-from config.db import get_db, session_scope
-from service.auth_service import get_current_user
+from config.db import get_db
 from utils import api_response
 from multiprocessing import Process
 
@@ -30,8 +29,11 @@ async def get_products(
         limit: int = 20,
         current_user: UserModel = Depends(auth_service.get_current_user)
 ):
-    products = product_service.get_products(db, skip, limit, current_user)
-    return api_response.success_response(products)
+    try:
+        products = product_service.get_products(db, current_user, skip, limit)
+        return api_response.success_response(products)
+    except HTTPException as e:
+        return api_response.error_response(e.detail, e.status_code)
 
 
 @route.get(

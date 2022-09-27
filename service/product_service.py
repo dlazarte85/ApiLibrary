@@ -44,9 +44,9 @@ def get_product_by_name(name: str, db: Session, current_user: UserModel, product
 
 
 def get_products(db: Session, current_user: UserModel, skip: int = 0, limit: int = 100):
-    all_filters = []
+    all_filters = [ProductModel.deleted == False]
     if current_user.is_admin is False:
-        all_filters = [ProductModel.user_id == current_user.id]
+        all_filters.append(ProductModel.user_id == current_user.id)
 
     return db.query(ProductModel).filter(*all_filters).offset(skip).limit(limit).all()
 

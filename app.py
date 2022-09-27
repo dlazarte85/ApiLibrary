@@ -2,7 +2,7 @@ from fastapi import FastAPI, Request, status
 from fastapi.encoders import jsonable_encoder
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
-from pydantic import error_wrappers
+from fastapi.middleware.cors import CORSMiddleware
 
 from routes.user_route import route as user_route
 from routes.auth_route import route as auth_route
@@ -13,6 +13,20 @@ import logging
 logging.basicConfig(filename='./logs/api.log', encoding='utf-8', level=logging.DEBUG)
 
 app = FastAPI()
+
+origins = [
+    "http://localhost",
+    "http://localhost:8000",
+    "http://localhost:3000",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.exception_handler(Exception)

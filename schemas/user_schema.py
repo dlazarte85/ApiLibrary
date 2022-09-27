@@ -1,4 +1,4 @@
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel, EmailStr, validator
 
 
 class UserBase(BaseModel):
@@ -7,6 +7,14 @@ class UserBase(BaseModel):
     email: EmailStr | None = None
     enabled: bool | None = None
     is_admin: bool | None = False
+    password: str | None = None
+    password_confirm: str | None = None
+
+    @validator('password_confirm')
+    def passwords_match(cls, v, values, **kwargs):
+        if 'password' in values and v != values['password']:
+            raise ValueError('Passwords do not match')
+        return v
 
 
 class UserCreate(UserBase):
@@ -14,10 +22,11 @@ class UserCreate(UserBase):
     name: str
     email: EmailStr
     password: str
+    password_confirm: str
 
 
 class UserUpdate(UserBase):
-    password: str | None = None
+    pass
 
 
 class User(UserBase):

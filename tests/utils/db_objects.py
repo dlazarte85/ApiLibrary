@@ -4,7 +4,8 @@ user_data_create = {
     "email": "testuser@nofoobar.com",
     "enabled": True,
     "is_admin": False,
-    "password": "pass_testing"
+    "password": "pass_testing",
+    "password_confirm": "pass_testing"
 }
 
 product_data_create = {

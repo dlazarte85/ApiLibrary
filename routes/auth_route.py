@@ -5,7 +5,6 @@ from sqlalchemy.orm import Session
 from config.db import get_db
 from fastapi.security import OAuth2PasswordRequestForm
 
-
 route = APIRouter(prefix="/api")
 
 
