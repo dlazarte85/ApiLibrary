@@ -12,7 +12,7 @@ DB_PORT = settings.db_port
 
 DATABASE_URL = settings.database_url
 
-engine = create_engine(DATABASE_URL, echo=True)
+engine = create_engine(DATABASE_URL)
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 

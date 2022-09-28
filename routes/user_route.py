@@ -32,7 +32,7 @@ async def get_users(db: Session = Depends(get_db), skip: int = 0, limit: int = 2
     description="Return logged in user"
 )
 async def read_users_me(current_user: user_schema.User = Depends(auth_service.get_current_user)):
-    return current_user
+    return api_response.success_response(current_user.__dict__)
 
 
 @route.get(
