@@ -1,10 +1,9 @@
+from config.oauth2 import AuthJWT
 from sqlalchemy.orm import Session
-from datetime import datetime, timedelta
+from datetime import timedelta
 
 from fastapi import Depends, HTTPException, status
-from fastapi.security import OAuth2PasswordBearer
 
-from jose import JWTError, jwt
 from passlib.context import CryptContext
 
 from schemas.token_schema import TokenData
@@ -12,12 +11,12 @@ from config.settings import settings
 from config.db import get_db
 from service import user_service
 
-SECRET_KEY = settings.secret_key
+SECRET_KEY = settings.jwt_secret_key
 ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = settings.token_expire
+ACCESS_TOKEN_EXPIRES_IN = settings.jwt_access_token_expires_in
+REFRESH_TOKEN_EXPIRES_IN = settings.jwt_refresh_token_expires_in
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="api/login")
 
 
 def verify_password(plain_password, password):
@@ -37,18 +36,7 @@ async def authenticate_user(username: str, password: str, db: Session):
     return user
 
 
-async def create_access_token(data: dict, expires_delta: timedelta | None = None):
-    to_encode = data.copy()
-    if expires_delta:
-        expire = datetime.utcnow() + expires_delta
-    else:
-        expire = datetime.utcnow() + timedelta(minutes=15)
-    to_encode.update({"exp": expire})
-    encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
-    return encoded_jwt
-
-
-async def generate_token(username: str, password: str, db: Session):
+async def generate_token(username: str, password: str, authorize: AuthJWT, db: Session):
     user = await authenticate_user(username, password, db)
     if not user:
         raise HTTPException(
@@ -60,29 +48,68 @@ async def generate_token(username: str, password: str, db: Session):
     if not user.enabled:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Inactive user")
 
-    access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+    access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRES_IN)
+    refresh_token_expires = timedelta(minutes=REFRESH_TOKEN_EXPIRES_IN)
 
-    return await create_access_token(
-        data={"sub": user.username}, expires_delta=access_token_expires
-    )
+    access_token = authorize.create_access_token(subject=username, expires_time=access_token_expires)
+    refresh_token = authorize.create_refresh_token(subject=username, expires_time=refresh_token_expires)
+    return {"access_token": access_token, "refresh_token": refresh_token}
 
 
-async def get_current_user(db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)):
-    credentials_exception = HTTPException(
-        status_code=status.HTTP_401_UNAUTHORIZED,
-        detail="Could not validate credentials",
-        headers={"WWW-Authenticate": "Bearer"},
-    )
+class UserNotFound(Exception):
+    pass
+
+
+async def get_current_user(db: Session = Depends(get_db), authorize: AuthJWT = Depends()):
     try:
-        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-        username: str = payload.get("sub")
-        if username is None:
-            raise credentials_exception
+        authorize.jwt_required()
+        username = authorize.get_jwt_subject()
         token_data = TokenData(username=username)
-    except JWTError:
-        raise credentials_exception
+        user = user_service.get_user(username=token_data.username, db=db)
+        if user is None:
+            raise UserNotFound('User no longer exists')
 
-    user = user_service.get_user(username=token_data.username, db=db)
-    if user is None:
-        raise credentials_exception
+    except Exception as e:
+        error = e.__class__.__name__
+        if error == 'MissingTokenError':
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED, detail='You are not logged in')
+        if error == 'UserNotFound':
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED, detail='User no longer exist')
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED, detail='Token is invalid or has expired')
+
     return user
+
+
+async def refresh_access_token(authorize: AuthJWT, db: Session):
+    """
+    The jwt_refresh_token_required() function insures a valid refresh
+    token is present in the request before running any code below that function.
+    we can use the get_jwt_subject() function to get the subject of the refresh
+    token, and use the create_access_token() function again to make a new access token
+    """
+    try:
+        authorize.jwt_refresh_token_required()
+
+        current_user = authorize.get_jwt_subject()
+        if not current_user:
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED, detail='Could not refresh access token')
+        user = user_service.get_user(username=current_user, db=db)
+        if not user:
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED, detail='The user belonging to this token no logger exist')
+
+        access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRES_IN)
+        new_access_token = authorize.create_access_token(subject=current_user, expires_time=access_token_expires)
+        return {"access_token": new_access_token}
+    except Exception as e:
+        error = e.__class__.__name__
+        if error == 'MissingTokenError':
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST, detail='Please provide refresh token')
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST, detail=error)
+

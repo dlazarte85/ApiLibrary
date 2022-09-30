@@ -3,6 +3,7 @@ from fastapi.encoders import jsonable_encoder
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi_jwt_auth.exceptions import AuthJWTException
 
 from routes.user_route import route as user_route
 from routes.auth_route import route as auth_route
@@ -50,6 +51,15 @@ async def catch_exception_handler(request: Request, exc: RequestValidationError)
         content={"status": False, "error": jsonable_encoder(exc.errors())},
     )
 
+
+# exception handler for authjwt
+# in production, you can tweak performance using orjson response
+@app.exception_handler(AuthJWTException)
+async def authjwt_exception_handler(request: Request, exc: AuthJWTException):
+    return JSONResponse(
+        status_code=exc.status_code,
+        content={"status": False, "error": exc.message}
+    )
 
 app.include_router(user_route)
 app.include_router(auth_route)

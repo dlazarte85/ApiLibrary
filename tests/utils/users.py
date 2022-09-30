@@ -1,3 +1,5 @@
+import json
+
 from service.user_service import create_user, get_user_by_email
 from fastapi.testclient import TestClient
 from schemas.user_schema import UserCreate
@@ -6,10 +8,10 @@ from sqlalchemy.orm import Session
 
 def user_authentication_headers(client: TestClient, email: str, password: str):
     data = {"username": email, "password": password}
-    r = client.post("/api/login", data=data)
+    r = client.post("/api/login", json.dumps(data))
     response = r.json()
-    auth_token = response["access_token"]
-    headers = {"Authorization": f"Bearer {auth_token}"}
+    access_token = response["data"]["access_token"]
+    headers = {"Authorization": f"Bearer {access_token}"}
     return headers
 
 
