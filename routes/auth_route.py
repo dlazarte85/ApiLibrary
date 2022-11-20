@@ -1,5 +1,5 @@
 from schemas.generic_response_schema import GenericResponse, GenericErrorResponse
-from schemas.token_schema import Token
+from schemas.token_schema import Token, TokenRefresh
 from schemas.user_schema import UserLogin
 from service import auth_service
 from fastapi import APIRouter, Depends, HTTPException
@@ -12,7 +12,7 @@ route = APIRouter(prefix="/api")
 
 
 @route.post(
-    "/login",
+    '/login',
     tags=["auth"],
     response_model=GenericResponse[Token],
     responses={422: {"model": GenericErrorResponse}},
@@ -26,7 +26,12 @@ async def login_for_access_token(user: UserLogin, authorize: AuthJWT = Depends()
         return api_response.error_response(e.detail, e.status_code)
 
 
-@route.post('/refresh')
+@route.post(
+    '/refresh',
+    tags=["auth"],
+    response_model=GenericResponse[TokenRefresh],
+    responses={422: {"model": GenericErrorResponse}},
+)
 async def refresh_access_token(authorize: AuthJWT = Depends(), db: Session = Depends(get_db)):
     try:
         access_token = await auth_service.refresh_access_token(authorize, db)
